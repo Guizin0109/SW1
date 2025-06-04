@@ -9,11 +9,11 @@ if (isset($_POST ["op"]))
 {
 	$op = $_POST ["op"];
 	if ($op=="data_consulta")
-		$consulta=mysqli_query($bd,"select * from pacientes where veiculo='$expressao'");
+		$consulta=mysqli_query($bd,"select * from pacientes where data_consulta='$expressao'");
 	if ($op=="quadro_clinico")
-		$consulta=mysqli_query($bd,"select * from pacientes where marca='$expressao'");
+		$consulta=mysqli_query($bd,"select * from pacientes where quadro_clinico='$expressao'");
 	if ($op=="nome")
-		$consulta=mysqli_query($bd,"select * from pacientes where proprietario like '%$expressao%'");
+		$consulta=mysqli_query($bd,"select * from pacientes where nome like '%$expressao%'");
 	
 } else
 {
@@ -28,28 +28,26 @@ if ($reg==0)
 }
 while ($reg!=0)
 {
-	$placa = $reg["placa"];
-	$veiculo = $reg["veiculo"];
-	$marca = $reg["marca"];
-	$cor = $reg["cor"];
-	$ano = $reg["ano"];
-	$proprietario = $reg["proprietario"];
+	$cpf = $reg["cpf"];
+	$nome = $reg["nome"];
 	$fone = $reg["fone"];
-	$opcionais = $reg["opcionais"];
+	$receita = $reg["receita"];
+	$data_consulta = $reg["data_consulta"];
+	$quadro_clinico = $reg["quadro_clinico"];
 	
-	echo   "Placa: $placa<br>
-			Veículo: $veiculo<br>
-			Marca: $marca<br>
-			Cor: $cor<br>
-			Ano: $ano<br>
-			Proprietário: $proprietario<br>
-			Fone: $fone<br>
-			Opcionais: $opcionais<br>";
+	echo   "cpf
+	cpf: $cpf<br>
+			nome: $nome<br>
+			fone: $fone<br>
+			receita: $receita<br>
+			data_consulta: $data_consulta<br>
+			quadro_clinico: $quadro_clinico<br>";
 			
 	?>
-	<a href="excluir.php?pl=<?php echo $placa;?>" onclick = "return confirm ('Exclui o registro?');">Excluir</a>
+	<a href="excluir.php?pl
+	=<?php echo $cpf;?>" onclick = "return confirm ('Exclui o registro?');">Excluir</a>
 	
-	<a href="alterar.php?pl=<?php echo $placa;?>">Alterar</a><hr>
+	<a href="alterar.php?pl=<?php echo $cpf;?>">Alterar</a><hr>
 	<?php
 	$reg = mysqli_fetch_array($consulta);		
 } 
